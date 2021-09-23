@@ -2,7 +2,7 @@
 /out/
 /lib/
 /.idea/
-/view/App #
+/view/App
 
 ### Java template
 # Compiled class file
@@ -31,3 +31,5 @@ hs_err_pid*
 
 
 
+
+/src/view/App.java
