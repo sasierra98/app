@@ -24,6 +24,6 @@
 hs_err_pid*
 
 # Files
-/out/
-/lib/
-/.idea/
+app/out/
+app/lib/
+app/.idea/
