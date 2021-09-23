@@ -3,15 +3,20 @@ package controller;
 import access.userDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.usersModel;
 import org.apache.commons.validator.routines.EmailValidator;
+import view.HelloApplication;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.Arrays;
 
 
@@ -19,13 +24,11 @@ public class Controller {
 
     private final usersModel user = new usersModel();
 
+
     private Label welcomeText;
 
-
-    private Button addButton;
-
     @FXML
-    private Button loginButton;
+    private Button loginButton, signUpButton, addButton;
 
     @FXML
     private TextField txtUser, txtPassword, txtEmail;
@@ -111,5 +114,16 @@ public class Controller {
         }
 
     }
-
+    @FXML
+    public void onSignUpButtonClicked(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) this.signUpButton.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+//        stage.initStyle(StageStyle.TRANSPARENT); Quita la barra de cerrar, maximizar y minimizar
+        Scene scene = new Scene(fxmlLoader.load());
+//        scene.setFill(Color.TRANSPARENT);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

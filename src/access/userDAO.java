@@ -1,8 +1,11 @@
 package access;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import controller.Controller;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import model.usersModel;
 import java.sql.Connection;
@@ -10,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import utils.ConnectionDB;
+import view.HelloApplication;
+
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
@@ -47,7 +52,7 @@ public class userDAO {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setTitle("Información");
-                    alert.setContentText("Usuario Correcto, Bienvenido" + " " +result.getString(1));
+                    alert.setContentText("Usuario Correcto, Bienvenido" + " " + result.getString(1));
                     alert.showAndWait();
 
                 }

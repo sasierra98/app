@@ -10,11 +10,12 @@
    <children>
       <Pane prefHeight="720.0" prefWidth="395.0" style="-fx-background-color: #D4CBCB;">
          <children>
-            <TextField fx:id="txtUser" layoutX="67.0" layoutY="183.0" prefHeight="57.0" prefWidth="253.0" style="-fx-background-radius: 10 10 10 10;" styleClass="borders" />
-            <TextField fx:id="txtPassword" layoutX="67.0" layoutY="303.0" prefHeight="57.0" prefWidth="253.0" style="-fx-background-radius: 10 10 10 10;" styleClass="borders" />
+            <TextField fx:id="txtUser" layoutX="67.0" layoutY="183.0" prefHeight="57.0" prefWidth="253.0" style="-fx-background-radius: 10 10 10 10;"  />
+            <TextField fx:id="txtPassword" layoutX="67.0" layoutY="303.0" prefHeight="57.0" prefWidth="253.0" style="-fx-background-radius: 10 10 10 10;"  />
             <Label layoutX="68.0" layoutY="166.0" text="Usuario" />
             <Label layoutX="67.0" layoutY="286.0" text="Contraseña" />
             <Button fx:id="loginButton" layoutX="157.0" layoutY="421.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClicked" prefHeight="34.0" prefWidth="81.0" text="Ingresar" />
+            <Button fx:id="signUpButton" layoutX="158.0" layoutY="495.0" mnemonicParsing="false" onMouseClicked="#onSignUpButtonClicked" prefHeight="34.0" prefWidth="81.0" text="Registrarse" />
          </children>
       </Pane>
    </children>
