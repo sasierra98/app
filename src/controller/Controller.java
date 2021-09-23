@@ -17,11 +17,15 @@ import java.util.Arrays;
 
 public class Controller {
 
-    @FXML
+    private final usersModel user = new usersModel();
+
     private Label welcomeText;
 
-    @FXML
+
     private Button addButton;
+
+    @FXML
+    private Button loginButton;
 
     @FXML
     private TextField txtUser, txtPassword, txtEmail;
@@ -83,6 +87,29 @@ public class Controller {
 //
 //        InitialData initialData = new InitialData();
 //        this.controlsPanel.setTblResults(initialData.getCarreras());
+    }
+
+    public void onLoginButtonClicked(MouseEvent mouseEvent) {
+        String username = this.txtUser.getText();
+        String password = this.txtPassword.getText();
+
+        usersModel user = new usersModel(username, password);
+        userDAO UserDAO = new userDAO();
+
+        try {
+            UserDAO.loginUser(user);
+
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setHeaderText(null);
+//            alert.setTitle("Información");
+//            alert.setContentText("Usuario Correcto, Bienvenido" + " " + username);
+//            alert.showAndWait();
+//             JOptionPane.showMessageDialog(null, "Email Inválido");
+        }
+        catch (Exception io){
+            System.out.println(io.getMessage());
+        }
+
     }
 
 }

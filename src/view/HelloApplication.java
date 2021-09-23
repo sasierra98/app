@@ -16,7 +16,7 @@ public class HelloApplication extends Application{
 
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
 //        stage.initStyle(StageStyle.TRANSPARENT); Quita la barra de cerrar, maximizar y minimizar
         Scene scene = new Scene(fxmlLoader.load());
 //        scene.setFill(Color.TRANSPARENT);

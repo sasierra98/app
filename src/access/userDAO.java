@@ -2,6 +2,7 @@ package access;
 
 import java.util.ArrayList;
 
+import controller.Controller;
 import javafx.scene.control.Alert;
 import model.usersModel;
 import java.sql.Connection;
@@ -18,28 +19,47 @@ public class userDAO {
     //CONEXION A LA BASE DE DATOS
 
     private Connection conn = null;
+    Controller controller = new Controller();
 
-//    public ArrayList<carrerasModel> getAllCarreras(){
-//        ArrayList<carrerasModel> carreras = new ArrayList();
-//
-//        try{
-//            if(conn == null)
-//                conn = ConnectionDB.getConnection();
-//
-//            String sql = "SELECT name, capacity, capability, difficulty FROM carreras";
-//            Statement statament = conn.createStatement();
-//            ResultSet result = statament.executeQuery(sql);  //error statement
-//            while(result.next()){
-//                carrerasModel carrera = new carrerasModel(result.getString(1),result.getInt(2), result.getString(3), result.getFloat(4));
-//                carreras.add(carrera);
-//            }
-//        }
-//        catch(SQLException ex){
-//            JOptionPane.showMessageDialog(null, "Código : " + ex.getErrorCode()
-//                    + "\nError :" + ex.getMessage());
-//        }
-//        return carreras;
-//    }
+    public ArrayList<usersModel> loginUser(usersModel user){
+        ArrayList<usersModel> users = new ArrayList();
+
+        try{
+            if(conn == null)
+                conn = ConnectionDB.getConnection();
+
+            String sql = "SELECT username, password FROM user WHERE username='"+user.getUsername()+"' and password='"+user.getPassword()+"';";
+            PreparedStatement   statament = conn.prepareStatement(sql);
+            ResultSet result = statament.executeQuery();  //error statement
+            while(result.next()) {
+                new usersModel(result.getString(1), result.getString(2));
+                users.add(user);
+
+//                System.out.println(result.getRow());
+
+                if (result.getString(1).length() < 1) {
+                    System.out.println("No se encuentra en la base de datos");
+                }
+                else {
+
+//                    System.out.println(result.getString(1) + " " + result.getString(2));
+                    System.out.println("Usuario Logeado" + " " + result.getString(1));
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setTitle("Información");
+                    alert.setContentText("Usuario Correcto, Bienvenido" + " " +result.getString(1));
+                    alert.showAndWait();
+
+                }
+            }
+
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Código : " + ex.getErrorCode()
+                    + "\nError :" + ex.getMessage());
+        }
+        return users;
+    }
 
 //    public ArrayList<carrerasModel> searchCarreras(String name){
 //        ArrayList<carrerasModel> carreras = new ArrayList();

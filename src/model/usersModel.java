@@ -11,6 +11,15 @@ public class usersModel {
         this.email = email;
     }
 
+    public usersModel(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public usersModel() {
+
+    }
+
     public int getId() {
         return id;
     }
